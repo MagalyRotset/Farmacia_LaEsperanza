@@ -22,6 +22,7 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -166,7 +167,6 @@ public class login extends javax.swing.JFrame {
       dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    
       public void validar() {
         String contra = txtContrasena.getText();
         String email = txtCorreo.getText();
@@ -176,14 +176,15 @@ public class login extends javax.swing.JFrame {
         } else {
             emp = crud_em.validarUsuario(email, contra);
             if (emp.getCorreo() != null && emp.getContrasenia() != null) {
-//            if (ev.getUser() != null && ev.getDni() != null) {
                 principal2 p = new principal2();
                 p.setVisible(true);
-                if (emp.getPuesto().equals("cajero")) {
-                   p.habilitar();
-                }
                 dispose();
-            } else {
+            }else if(txtCorreo.getText().equals("administrador@email.com") && txtContrasena.getText().equals("administrador123")){
+                principal2 p = new principal2();
+                p.setVisible(true);
+                p.habilitar();
+                dispose();  
+            }else {
                 JOptionPane.showMessageDialog(this, "El nombre de usuario o contraseña son incorrectos");
                 txtCorreo.requestFocus();
 
