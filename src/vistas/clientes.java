@@ -24,6 +24,7 @@ public class clientes extends javax.swing.JFrame {
     
     public clientes() {
         initComponents();
+        setLocationRelativeTo(null);
          listarCliente();
          
     }
@@ -69,6 +70,7 @@ public class clientes extends javax.swing.JFrame {
              cli.setCorreo(correo);
              cli.setDireccion(dir);
              crud_c.agregarCliente(cli);
+             JOptionPane.showMessageDialog(this, "Cliente agregado correctamente.");
              LimpiarTabla();
              listarCliente();
          }
@@ -114,7 +116,7 @@ public class clientes extends javax.swing.JFrame {
              cli.setId_cliente(id);
             r = crud_c.actualizarCliente(cli);
             if (r == 1) {
-                JOptionPane.showMessageDialog(this, "Usuario actualizado");
+                JOptionPane.showMessageDialog(this, "Cliente actualizado");
             } else {
                 JOptionPane.showMessageDialog(this, "Error");
             }
@@ -212,7 +214,7 @@ public class clientes extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Clientes");
+        jLabel2.setText("CLIENTES");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -220,7 +222,7 @@ public class clientes extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(120, 120, 120)
+                .addGap(210, 210, 210)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,12 +233,10 @@ public class clientes extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Buscar cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
@@ -266,7 +266,7 @@ public class clientes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CODIGO", "NOMBRES", "APELLIDOS", "RFC", "EMAIL", "NUM. TELEFONO", "DIRECCIÓN"
+                "CODIGO", "NOMBRES", "APELLIDOS", "TELEFONO", "RFC", "CORREO", "DIRECCIÓN"
             }
         ));
         tablaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -333,9 +333,9 @@ public class clientes extends javax.swing.JFrame {
 
         jLabel6.setText("APELLIDOS:");
 
-        jLabel7.setText("EMAIL:");
+        jLabel7.setText("TELEFONO:");
 
-        jLabel8.setText("TELEFONO:");
+        jLabel8.setText("CORREO:");
 
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
@@ -491,15 +491,13 @@ public class clientes extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                                .addContainerGap())
+                            .addComponent(btnRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)
-                                .addGap(33, 33, 33))))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton1)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,14 +505,12 @@ public class clientes extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRegresar)
                         .addGap(24, 24, 24))))
         );
