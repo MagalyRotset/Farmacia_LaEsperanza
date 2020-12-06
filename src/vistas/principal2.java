@@ -25,7 +25,7 @@ public class principal2 extends javax.swing.JFrame {
     public principal2() {
        
         initComponents();
-        
+        setLocationRelativeTo(null);
          fecha();
          hora();
     }
@@ -69,7 +69,11 @@ public class principal2 extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton_cerrar2.png"))); // NOI18N
         jButton1.setText("SALIR");
+        jButton1.setContentAreaFilled(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -152,6 +156,7 @@ public class principal2 extends javax.swing.JFrame {
 
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (2).png"))); // NOI18N
         btnUsuarios.setContentAreaFilled(false);
+        btnUsuarios.setEnabled(false);
         btnUsuarios.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono_usuario_gris.png"))); // NOI18N
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,13 +224,12 @@ public class principal2 extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel7))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel11)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel11)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
