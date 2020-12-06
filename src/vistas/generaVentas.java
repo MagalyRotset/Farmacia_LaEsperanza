@@ -45,13 +45,14 @@ public class generaVentas extends javax.swing.JFrame {
     
     public generaVentas() {
         initComponents();
+        setLocationRelativeTo(null);
         fecha();
          hora();
          generarSerie();
     }
 
     void fecha() {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd");
         txtFecha.setText("" +dateFormat.format(date));
     }
     void hora() {
@@ -70,7 +71,7 @@ public class generaVentas extends javax.swing.JFrame {
         }
     }
     
-    //**************************BUSCAR CLIENTE**********************************
+    //**************************BUSCAR CLIENTE CON EL ID  DEL CLIENTE**********************************
      void buscarCliente() {
         int r;
         int cod = Integer.parseInt(txtBuscarcli.getText());
@@ -94,7 +95,7 @@ public class generaVentas extends javax.swing.JFrame {
 
     }
      
- //****************BUSCAR PRODUCTOS*************************+
+ //****************BUSCAR PRODUCTOS CON EL ID DEL PRODUCTO*************************+
      void buscarProducto() {
         int id = Integer.parseInt(txtCodigoproducto.getText());
         if (txtCodigoproducto.getText().equals("")) {
@@ -111,7 +112,7 @@ public class generaVentas extends javax.swing.JFrame {
             }
         }
     }
-  //*****************ACTUALIZAR STOCK*************************
+  //*****************ACTUALIZAR STOCK DE LOS PRODUCTOS*************************
          void actualizarStock() {
         for (int i = 0; i < modelo.getRowCount(); i++) {
             producto pr = new producto();
@@ -203,7 +204,7 @@ public class generaVentas extends javax.swing.JFrame {
             crud_v.GuardarDetalleVentas(dv);
         }
        }
-    //******************** LIMPIAR TODO******************
+    //******************** LIMPIAR TODOS LOS TEXTFIELDS DE LA VISTA******************
         void nuevo() {
         limpiarTabla();
         txtBuscarcli.setText("");
@@ -217,7 +218,7 @@ public class generaVentas extends javax.swing.JFrame {
         labelTotal.setText("");
     }
         
-   //******************LIMPIAR TABLA**************
+   //******************LIMPIAR TABLA PARA GENERAR UNA NUEVA VENTA**************
        void limpiarTabla() {
         for (int i = 0; i < modelo.getRowCount(); i++) {
             modelo.removeRow(i);
@@ -247,6 +248,7 @@ public class generaVentas extends javax.swing.JFrame {
         txtStock = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JSpinner();
+        btnLista = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaVenta = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
@@ -268,8 +270,14 @@ public class generaVentas extends javax.swing.JFrame {
         txtApellidos_cli = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtSerie = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        txtEfectivo = new javax.swing.JTextField();
+        txtCambio = new javax.swing.JTextField();
+        btnLista1 = new javax.swing.JButton();
 
-        setMinimumSize(null);
+        setMinimumSize(new java.awt.Dimension(1004, 800));
+        setPreferredSize(new java.awt.Dimension(1007, 685));
 
         jPanel2.setBackground(new java.awt.Color(21, 129, 154));
 
@@ -279,7 +287,7 @@ public class generaVentas extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Gererar Ventas");
+        jLabel1.setText("GENERAR VENTAS");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -373,6 +381,18 @@ public class generaVentas extends javax.swing.JFrame {
 
         jLabel13.setText("CANTIDAD A ELEGIR:");
 
+        btnLista.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnLista.setForeground(new java.awt.Color(255, 255, 255));
+        btnLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        btnLista.setText("PRODUCTOS");
+        btnLista.setContentAreaFilled(false);
+        btnLista.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -393,7 +413,10 @@ public class generaVentas extends javax.swing.JFrame {
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnLista, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel10)
@@ -410,7 +433,7 @@ public class generaVentas extends javax.swing.JFrame {
                         .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,7 +442,8 @@ public class generaVentas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCodigoproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLista, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtProducto)
@@ -546,11 +570,42 @@ public class generaVentas extends javax.swing.JFrame {
 
         txtSerie.setEditable(false);
 
+        jLabel15.setText("EFECTIVO:");
+
+        jLabel18.setText("CAMBIO:");
+
+        txtCambio.setEditable(false);
+
+        btnLista1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLista1.setForeground(new java.awt.Color(0, 153, 153));
+        btnLista1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes_f.png"))); // NOI18N
+        btnLista1.setText("CORTE DE CAJA");
+        btnLista1.setContentAreaFilled(false);
+        btnLista1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnLista1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLista1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(787, 787, 787)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel18)
+                        .addComponent(jLabel15)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCambio)
+                    .addComponent(txtEfectivo)
+                    .addComponent(labelTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -577,23 +632,22 @@ public class generaVentas extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(txtCajero, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
+                        .addGap(42, 42, 42)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(btnLista1)
+                        .addGap(162, 162, 162)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(31, 31, 31)
                         .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(133, 133, 133)
-                        .addComponent(btnRegresar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addGap(117, 117, 117)
+                        .addComponent(btnRegresar)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -620,17 +674,37 @@ public class generaVentas extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCajero, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(labelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(txtEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(labelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegresar)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLista1)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addComponent(btnRegresar)
+                        .addGap(49, 49, 49))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -663,6 +737,10 @@ public class generaVentas extends javax.swing.JFrame {
             guardarVenta();
             guardarDetalle();
             actualizarStock();
+            double efectivo= Double.parseDouble( txtEfectivo.getText());
+            double monto = Double.parseDouble( labelTotal.getText());
+            double cambio= efectivo-monto;
+            txtCambio.setText(""+cambio);
             JOptionPane.showMessageDialog(this, "Venta realizada con exito");
             nuevo();
             generarSerie();
@@ -673,6 +751,17 @@ public class generaVentas extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         agregarProducto();
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
+        inventario in = new inventario();
+        in.setVisible(true);
+    }//GEN-LAST:event_btnListaActionPerformed
+
+    private void btnLista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLista1ActionPerformed
+     reportes rep = new reportes();
+     rep.setVisible(true);
+     dispose();
+    }//GEN-LAST:event_btnLista1ActionPerformed
  public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -711,6 +800,8 @@ public class generaVentas extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscarc;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnLista;
+    private javax.swing.JButton btnLista1;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnVenta;
     private javax.swing.JLabel jLabel1;
@@ -719,8 +810,10 @@ public class generaVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -738,8 +831,10 @@ public class generaVentas extends javax.swing.JFrame {
     private javax.swing.JTextField txtApellidos_cli;
     private javax.swing.JTextField txtBuscarcli;
     private javax.swing.JTextField txtCajero;
+    private javax.swing.JTextField txtCambio;
     private javax.swing.JSpinner txtCantidad;
     private javax.swing.JTextField txtCodigoproducto;
+    private javax.swing.JTextField txtEfectivo;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtNombre_cli;
