@@ -24,6 +24,7 @@ public class usuarios extends javax.swing.JFrame {
     
     public usuarios() {
         initComponents();
+        setLocationRelativeTo(null);
         listarEmpleado();
     }
   //*************Mostrar lista de empleados*********************
@@ -189,7 +190,7 @@ public class usuarios extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("EMPLEADOS");
+        jLabel2.setText("USUARIOS");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
